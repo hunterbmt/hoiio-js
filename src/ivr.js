@@ -1,12 +1,12 @@
 var HoiioIVR = function(app_id,access_token){
-    this.app_id = app_id;
-    this.access_token = access_token;
-    this.hoiioHttp = HoiioHTTP;
+    HoiioIVR.app_id = app_id;
+    HoiioIVR.access_token = access_token;
+    HoiioIVR.hoiioHttp = HoiioHTTP;
 };
 HoiioIVR.prototype.dial = function(dest, callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         dest: dest
     };
     if (options != undefined) {
@@ -32,12 +32,12 @@ HoiioIVR.prototype.dial = function(dest, callback, options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("dial", params, "POST", callback)
+    HoiioIVR.hoiioHttp.makeHttpRequest("dial", params, "POST", callback)
 }
 HoiioIVR.prototype.play = function(session, callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session
     };
     if (options != undefined) {
@@ -55,12 +55,12 @@ HoiioIVR.prototype.play = function(session, callback, options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("play", params, "POST", callback);
+    HoiioIVR.hoiioHttp.makeHttpRequest("play", params, "POST", callback);
 };
 HoiioIVR.prototype.gather =  function (session, notify_url, callback, options) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session,
         notify_url: notify_url
     };
@@ -87,12 +87,12 @@ HoiioIVR.prototype.gather =  function (session, notify_url, callback, options) {
             params.tag = tag;
         }
     }
-    this.hoiioHttp.makeHttpRequest("gather", params, "POST", callback)
+    HoiioIVR.hoiioHttp.makeHttpRequest("gather", params, "POST", callback)
 };
 HoiioIVR.prototype.record = function (session, notify_url, callback, options) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session,
         notify_url: notify_url
     };
@@ -111,12 +111,12 @@ HoiioIVR.prototype.record = function (session, notify_url, callback, options) {
             params.tag = tag;
         }
     }
-    this.hoiioHttp.makeHttpRequest("record", params, "POST", callback);
+    HoiioIVR.hoiioHttp.makeHttpRequest("record", params, "POST", callback);
 };
 HoiioIVR.prototype.monito = function (session, notify_url, callback, options) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session,
         notify_url: notify_url
     };
@@ -130,12 +130,12 @@ HoiioIVR.prototype.monito = function (session, notify_url, callback, options) {
             params.tag = tag;
         }
     }
-    this.hoiioHttp.makeHttpRequest("monitor", params, "POST", callback)
+    HoiioIVR.hoiioHttp.makeHttpRequest("monitor", params, "POST", callback)
 };
 HoiioIVR.prototype.transfer = function (session, dest, callback, options) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session,
         dest: dest
     };
@@ -162,12 +162,12 @@ HoiioIVR.prototype.transfer = function (session, dest, callback, options) {
             params.notify_url = notify_url;
         }
     }
-    this.hoiioHttp.makeHttpRequest("transfer", params, "POST", callback)
+    HoiioIVR.hoiioHttp.makeHttpRequest("transfer", params, "POST", callback)
 };
 HoiioIVR.prototype.hangup = function (session, callback, options) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioIVR.app_id,
+        access_token: HoiioIVR.access_token,
         session: session
     };
     if (options != undefined) {
@@ -184,5 +184,5 @@ HoiioIVR.prototype.hangup = function (session, callback, options) {
             params.notify_url = notify_url;
         };
     }
-    this.hoiioHttp.makeHttpRequest("hangup", params, "POST", callback)
+    HoiioIVR.hoiioHttp.makeHttpRequest("hangup", params, "POST", callback)
 };

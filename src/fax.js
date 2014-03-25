@@ -1,14 +1,14 @@
 var HoiioFax = function(app_id,access_token){
-    this.app_id = app_id;
-    this.access_token = access_token;
-    this.hoiioHttp = HoiioHTTP;
+    HoiioFax.app_id = app_id;
+    HoiioFax.access_token = access_token;
+    HoiioFax.hoiioHttp = HoiioHTTP;
 };
 HoiioFax.prototype.send = function(dest, file, callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioFax.app_id,
+        access_token: HoiioFax.access_token,
         dest : dest,
-        file: file,
+        file: file
     }
     if (options != undefined) {
         var filename = options['filename'];
@@ -29,12 +29,12 @@ HoiioFax.prototype.send = function(dest, file, callback, options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("sendFax", params, "POST", callback);
+    HoiioFax.hoiioHttp.makeHttpRequest("sendFax", params, "POST", callback);
 };
 HoiioFax.prototype.history = function(callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioFax.app_id,
+        access_token: HoiioFax.access_token
     }   
     if (options != undefined) {
         var from = options['from'];
@@ -71,23 +71,23 @@ HoiioFax.prototype.history = function(callback, options){
             params.tag = tag;
         }
     }
-    this.hoiioHttp.makeHttpRequest("getFaxHistory", params, "POST", callback);
+    HoiioFax.hoiioHttp.makeHttpRequest("getFaxHistory", params, "POST", callback);
 };
 HoiioFax.prototype.rate = function(dest, incoming, callback){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioFax.app_id,
+        access_token: HoiioFax.access_token,
         dest : dest,
         incoming : incoming
     };
     
-    this.hoiioHttp.makeHttpRequest("getFaxRate", params, "POST", callback); 
+    HoiioFax.hoiioHttp.makeHttpRequest("getFaxRate", params, "POST", callback); 
 };
 HoiioFax.prototype.queryStatus = function(txn_ref, callback){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioFax.app_id,
+        access_token: HoiioFax.access_token,
         txn_ref : txn_ref 
     };
-    this.hoiioHttp.makeHttpRequest("getFaxStatus", params, "POST", callback);
+    HoiioFax.hoiioHttp.makeHttpRequest("getFaxStatus", params, "POST", callback);
 };

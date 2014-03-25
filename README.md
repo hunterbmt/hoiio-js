@@ -11,11 +11,13 @@ You'll need to include the js file you wanna use into your html file.
 
 
 # Usage
+Include hoiiojs.js in dist folder.
+
 Here are some examples you can use the SDK to access all Hoiio's API (via Hoiio class)
 
 ``` javascript
 	// init hoiio sdk with app_id and access_token
-	hoiio_sms.init(app_id,access_token);
+	var hoiio_sms = new HoiioSMS(app_id,access_token)
 	//send a sms with dest param, msg param and callback function 
 	
 	hoiio_sms.send(dest,msg,function(result) {

@@ -1,12 +1,12 @@
 var HoiioVoice = function(app_id,access_token){
-    this.app_id = app_id;
-    this.access_token = access_token;
-    this.hoiioHttp = HoiioHTTP;
+    HoiioVoice.app_id = app_id;
+    HoiioVoice.access_token = access_token;
+    HoiioVoice.hoiioHttp = HoiioHTTP;
 };
 HoiioVoice.prototype.call = function(dest, callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token,
         dest2: dest
     };
     if (options != undefined) {
@@ -32,12 +32,12 @@ HoiioVoice.prototype.call = function(dest, callback, options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("makeCall", params, "POST", callback);
+    HoiioVoice.hoiioHttp.makeHttpRequest("makeCall", params, "POST", callback);
 };
 HoiioVoice.prototype.conference = function(dest, callback, option){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token,
         dest: dest
     };
     if (options != undefined) {
@@ -59,20 +59,20 @@ HoiioVoice.prototype.conference = function(dest, callback, option){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("makeConference", params, "POST", callbackFunction)
+    HoiioVoice.hoiioHttp.makeHttpRequest("makeConference", params, "POST", callbackFunction)
 };
 HoiioVoice.prototype.hangup = function(txn_ref, callback){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token,
         txn_ref: txn_ref
     }; 
-    this.hoiioHttp.makeHttpRequest("hangupCall", params, "POST", callbackFunction)
+    HoiioVoice.hoiioHttp.makeHttpRequest("hangupCall", params, "POST", callbackFunction)
 }
 HoiioVoice.prototype.history = function(callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token
     };
     if (options != undefined) {
         var from = options['from'];
@@ -93,22 +93,22 @@ HoiioVoice.prototype.history = function(callback, options){
             params.page_size = page_size
         }
     }
-    this.hoiioHttp.makeHttpRequest("getCallHistory", params, "POST", callback);
+    HoiioVoice.hoiioHttp.makeHttpRequest("getCallHistory", params, "POST", callback);
 };
 HoiioVoice.prototype.rate = function(dest1, dest2, callbackFunction){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token,
         dest1: dest1,
         dest2: dest2
     };
-    this.hoiioHttp.makeHttpRequest("getCallRate", params, "POST", callback);
+    HoiioVoice.hoiioHttp.makeHttpRequest("getCallRate", params, "POST", callback);
 };
 HoiioVoice.prototype.queryStatus = function(txn_ref, callback){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioVoice.app_id,
+        access_token: HoiioVoice.access_token,
         txn_ref: txn_ref
     };
-    this.hoiioHttp.makeHttpRequest("getCallStatus", params, "POST", callbackFunction)
+    HoiioVoice.hoiioHttp.makeHttpRequest("getCallStatus", params, "POST", callbackFunction)
 }

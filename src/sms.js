@@ -1,12 +1,12 @@
 var HoiioSMS = function(app_id,access_token){
-    this.app_id = app_id;
-    this.access_token = access_token;
-    this.hoiioHttp = HoiioHTTP;
+    HoiioSMS.app_id = app_id;
+    HoiioSMS.access_token = access_token;
+    HoiioSMS.hoiioHttp = HoiioHTTP;
 };
 HoiioSMS.prototype.send = function(dest, msg, callback,options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioSMS.app_id,
+        access_token: HoiioSMS.access_token,
         dest: dest,
         msg: msg
     };
@@ -26,12 +26,12 @@ HoiioSMS.prototype.send = function(dest, msg, callback,options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("sendSMS", params, "POST", callback);
+    HoiioSMS.hoiioHttp.makeHttpRequest("sendSMS", params, "POST", callback);
 };
 HoiioSMS.prototype.bulkSend = function(dest, msg, callback, options){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioSMS.app_id,
+        access_token: HoiioSMS.access_token,
         dest: dest,
         msg: msg
     };
@@ -50,12 +50,12 @@ HoiioSMS.prototype.bulkSend = function(dest, msg, callback, options){
             params.notify_url = notify_url
         }
     }
-    this.hoiioHttp.makeHttpRequest("sendBulkSMS", params, "POST", callback);
+    HoiioSMS.hoiioHttp.makeHttpRequest("sendBulkSMS", params, "POST", callback);
 };
 HoiioSMS.prototype.history = function(callback,option){
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token
+        app_id: HoiioSMS.app_id,
+        access_token: HoiioSMS.access_token
     };
     if (options != undefined) {
         var from = options['from'];
@@ -76,23 +76,23 @@ HoiioSMS.prototype.history = function(callback,option){
             params.page_size = page_size
         }
     }
-    this.hoiioHttp.makeHttpRequest("getSMSHistory", params, "POST", callback);
+    HoiioSMS.hoiioHttp.makeHttpRequest("getSMSHistory", params, "POST", callback);
 }
 HoiioSMS.prototype.rate = function(dest, incoming, msg, callback) {
     var params = {
-        app_id: this.app_id,
-        access_token: this.access_token,
+        app_id: HoiioSMS.app_id,
+        access_token: HoiioSMS.access_token,
         dest: dest,
         incoming: incoming,
         msg: msg
     };
-    this.hoiioHttp.makeHttpRequest("getSMSRate", params, "POST", callback);
+    HoiioSMS.hoiioHttp.makeHttpRequest("getSMSRate", params, "POST", callback);
 }
 HoiioSMS.prototype.queryStatus = function(txn_ref, callback){
     var params = {
-        app_id: hoiio_sms.app_id,
-        access_token: hoiio_sms.access_token,
+        app_id: HoiioSMS.app_id,
+        access_token: HoiioSMS.access_token,
         txn_ref: txn_ref
     };
-    this.hoiioHttp.makeHttpRequest("getSMSStatus", params, "POST", callback);
+    HoiioSMS.hoiioHttp.makeHttpRequest("getSMSStatus", params, "POST", callback);
 }

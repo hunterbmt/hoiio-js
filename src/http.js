@@ -33,7 +33,7 @@ var HoiioHTTP = {
     }
 }
 HoiioHTTP.getAPIURL = function(name){
-    return this.HoiioAPIURL[name];
+    return HoiioHTTP.HoiioAPIURL[name];
 }
 HoiioHTTP.getXMLHTTPRequest = function(){
     if (window.XMLHttpRequest)
@@ -52,7 +52,7 @@ HoiioHTTP.converJSonToQueryString = function(json){
 };
 HoiioHTTP.makeHttpRequest = function(api_name, params, method, callback){
     var request = HoiioHTTP.getXMLHTTPRequest();
-    function setupCallBack () = {
+    function setupCallBack (){
        request.onreadystatechange = function () {
             if (request.readyState == 4 && request.status == 200) {
                 var response = eval("(" + request.response + ")");
@@ -64,7 +64,7 @@ HoiioHTTP.makeHttpRequest = function(api_name, params, method, callback){
     setupCallBack();
     method = method || "POST";
     params = HoiioHTTP.converJSonToQueryString(params);
-    var url = this.getAPIURL(api_name);
+    var url = HoiioHTTP.getAPIURL(api_name);
     if (method.toUpperCase() == 'GET'){
         url = params ? url : url + "?" + params;
         HoiioHTTP.excuteGETRequest(request,url);
