@@ -6,13 +6,9 @@ Currently, hoiio-js supports the Call, SMS, Fax, Account, Hoiio Number and IVR A
 
 
 # Installing
-Place the js file inside the ```hoiio-js``` folder to your js folder. 
-You'll need to include the js file you wanna use into your html file.
-
-
-# Usage
 Include hoiiojs.js in dist folder.
 
+# Usage
 Here are some examples you can use the SDK to access all Hoiio's API (via Hoiio class)
 
 ``` javascript
